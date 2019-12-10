@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="Javascript/SignUpForm.js"></script>
+<title>Shopping Website</title>
+</head>
+<body>
+
+<h1>This is a Shopping Website</h1>
+
+<form name="SignUpForm" method="post" action="PHP/SignUp.php" id="SignUp" onsubmit="return ValidateName ()">
+<p style="text-align:center;">SignUp form<p>
+<table>
+<tr><td>Name</td><td><input type="text" name="Name" id="Name" required/></td></tr>
+<tr><td>Password</td><td><input type="password" name="Password" id="Password" required/></td></tr>
+<br><tr><td><input type="submit" name="SignUp" value="SignUp" class="click"></td></tr>
+</table>
+</form>
+
+</body>
+</html> 
