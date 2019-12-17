@@ -22,6 +22,9 @@
 		$insert = mysqli_query($db, $sql);
 		echo "<br>New user created successfully";
 		echo "<br>$name";
+		echo <<<HTML
+<br><a href="../index.html">Back to login</a>
+HTML;
 	} else {
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}

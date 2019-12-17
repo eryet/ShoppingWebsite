@@ -8,7 +8,7 @@ function ValidateSignUpName()
 	}  
 	else  
 	{  
-		alert("Enter only Alphabet!"); 
+		alert("Enter only Alphabet on Name!"); 
 		document.SignUpForm.Name.focus();  
 		return false;  
 	}  
@@ -24,7 +24,7 @@ function ValidateLoginName()
 	}  
 	else  
 	{  
-		alert("Enter only Alphabet!"); 
+		alert("Enter only Alphabet on Name!"); 
 		document.SignUpForm.Name.focus();  
 		return false;  
 	}  

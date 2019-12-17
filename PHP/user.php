@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
  <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +10,12 @@
 <title>Shopping Website</title>
 </head>
 <body>
+<hr>
+<?php
+	echo "Hello ", $_SESSION['Name'],
+	", Your Role is: ", $_SESSION['RoleID'],"<HR>";
+?>
 <h1>User mode</h1>
+<td><a href="logout.php">Logout</a></td>
 </body>
 </html> 
