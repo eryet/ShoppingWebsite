@@ -23,10 +23,7 @@ if ( ! isSet($_SESSION['Name'] )) {
 ?>
 <h1>admin mode</h1>
 <td><a href="logout.php">Logout</a></td>
-<td><a href="add_product.php">add product</a></td>
-<td><a href="delete_product.php">delete product</a></td>
-<td><a href="user.php">head to user interface</a></td>
-<td><a href="orderliststatus.php">order list</a></td>   
+<td><a href="admin.php">back to product list</a></td>
 <table width="200" border="1">
   <tr>
     <td>id</td>
@@ -45,12 +42,16 @@ while (	$rs=mysqli_fetch_assoc($result)) {
 }
 ?>
 </table>
-<form name="productForm" method="post" action="change_product.php">
-<p>change product based on product id</p>
-<input type="number" name="PID" id="PID" required>
+<table>
+<form name="productForm" method="post" action="delete.php">
+	<p>Delete product</p>
+	<td colspan="2">
+		<label>Product ID</label>&nbsp;<input type="number" name="PID" id="PID" required>
+	</td>
+</table>
 <td>
-	<input type="submit" name="changeproduct" value="Change Product" class="click">
+<td>
+	<input type="submit" name="deleteproduct" value="Delete Product" class="click">
 </td>
-</form>
 </body>
 </html> 
