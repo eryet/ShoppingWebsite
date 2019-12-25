@@ -7,6 +7,7 @@ if ( ! isSet($_SESSION['Name'] )) {
 	//if not logged in, redirect page to loginUI.php
 	header("Location: index.html");
 } else if($_SESSION['RoleID'] == 'User') {
+	// if roleid is user 
 	header("Location: user.php");
 }
 global $db;
