@@ -6,6 +6,8 @@ include_once("dbconfig.php");
 if ( ! isSet($_SESSION['Name'] )) {
 	//if not logged in, redirect page to loginUI.php
 	header("Location: index.html");
+} else if($_SESSION['RoleID'] == 'User') {
+	header("Location: user.php");
 }
 global $db;
 $pid = $_POST['PID'];

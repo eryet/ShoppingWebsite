@@ -4,8 +4,10 @@ require("prdModel.php");
 //check whether the user has logged in or not
 if ( ! isSet($_SESSION['Name'] )) {
 	//if not logged in, redirect page to loginUI.php
-	header("Location: index.html");
-}
+	header("Location: ../index.html");
+} else if($_SESSION['RoleID'] == 'User') {
+	header("Location: user.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>
