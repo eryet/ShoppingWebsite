@@ -20,7 +20,12 @@ switch($_GET["action"]) {
 			// set array $productByCode["name"]
 			$itemArray = array($productByCode[0]["name"]=>array('name'=>$productByCode[0]["name"], 'PID'=>$productByCode[0]["PID"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
 		
+		// 如果購物車不是空的
 		if(!empty($_SESSION["cart_item"])) {
+			//  in_array — Checks if a value exists in an array
+			//  array_keys — Return all the keys or a subset of the keys of an array
+			//  (array_keys) - returns the keys, numeric and string, from the array.
+			//  (array_keys) - If a search_value is specified, then only the keys for that value are returned. Otherwise, all the keys from the array are returned. 
 				if(in_array($productByCode[0]["name"],array_keys($_SESSION["cart_item"]))) {
 					foreach($_SESSION["cart_item"] as $k => $v) {
 							if($productByCode[0]["name"] == $k) {
@@ -92,7 +97,7 @@ while (	$rs=mysqli_fetch_assoc($result)) {
 	echo "<td>{$rs['detail']}</td>";
 	echo '
 		<form name="addproduct" method="post" action="user.php?action=add&name='.$rs['name'].'">
-		<td><input type="number" id="quantitiy" name="quantity" value="1"></td>
+		<td><input type="number" id="quantitiy" name="quantity" value="1" min="1"></td>
 	    <td><input type="submit" id="addtocart" name="addtocart" value="Add to cart"></td>
 		</form>';
 }
@@ -123,8 +128,8 @@ if(isset($_SESSION["cart_item"])){
 				<td><?php echo $item["PID"]; ?></td>
 				<td><?php echo $item["name"]; ?></td>
 				<td><?php echo $item["quantity"]; ?></td>
-				<td><?php echo "$ ".$item["price"]; ?></td>
-				<td><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td><?php echo $item["price"]; ?></td>
+				<td><?php echo number_format($item_price,2); ?></td>
 				<td>
 				<a href="user.php?action=remove&name=<?php echo $item["name"]; ?>">
 				remove item</a></td>

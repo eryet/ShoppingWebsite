@@ -15,23 +15,25 @@ if ( ! isSet($_SESSION['Name'] )) {
 		$place = $_POST['address'];
 		$uname = $_SESSION['Name'];
 		if(isset($_SESSION["cart_item"])){
-			foreach ($_SESSION["cart_item"] as $item){
-				$sql = "INSERT INTO orderlist(Name, PID, quantity, address) VALUES ('".$uname."','".$item["PID"]."','".$item["quantity"]."','".$place."')";
-				if (mysqli_query($db,$sql)){
-					echo '<script language="javascript">';
-					echo 'alert("Checkout succesfully!!");';
-					echo 'window.location.href="user.php";';
-					echo '</script>';
-					unset ($_SESSION["cart_item"]);
-					unset ($_SESSION["total_price"]);
-				} 
-				else 
-				{
-					echo '<script language="javascript">';
-					echo 'alert("Error occured!!");';
-					echo 'window.location.href="user.php";';
-					echo '</script>';
+			$sql = "INSERT INTO billlist (Name, address) VALUES ('".$uname."', '".$place."')";
+			if (mysqli_query($db,$sql)){
+				$bill =	mysqli_insert_id($db);
+				foreach ($_SESSION["cart_item"] as $item){
+					$sql2 = "INSERT INTO orderlist(Name, billID, PID, quantity, address) VALUES ('".$uname."','".$bill."', '".$item["PID"]."','".$item["quantity"]."','".$place."')";
+					if (mysqli_query($db,$sql2)){
+						echo '<script language="javascript">';
+						echo 'alert("Checkout succesfully!!");';
+						echo 'window.location.href="user.php";';
+						echo '</script>';
+						unset ($_SESSION["cart_item"]);
+						unset ($_SESSION["total_price"]);
+					}
 				}
+		   } else {
+			echo '<script language="javascript">';
+			echo 'alert("Error occured!!");';
+			echo 'window.location.href="user.php";';
+			echo '</script>';
 			}
-		}
+		}	
 ?>

@@ -4,10 +4,10 @@
 	$db=mysqli_connect("localhost", "root", "", "shopping");
 	if(isset($_POST['SignUp'])) {
 		
-		$name = ($_POST['Name']);
-		$password = ($_POST['Password']);
+		$name = mysqli_real_escape_string($db, $_POST['Name']);
+		$password = mysqli_real_escape_string($db, $_POST['Password']);;
 		$sql;
-		$password=md5($password);
+		$password = md5($password);
     if (!$db) {
 		die("Connection failed: " . mysqli_connect_error());
 	}

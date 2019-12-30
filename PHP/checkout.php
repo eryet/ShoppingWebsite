@@ -48,8 +48,8 @@ if(isset($_SESSION["cart_item"])){
 				<td><?php echo $item["PID"]; ?></td>
 				<td><?php echo $item["name"]; ?></td>
 				<td><?php echo $item["quantity"]; ?></td>
-				<td><?php echo "$ ".$item["price"]; ?></td>
-				<td><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td><?php echo $item["price"]; ?></td>
+				<td><?php echo number_format($item_price,2); ?></td>
 				</tr>
 				<?php
 				$total_quantity += $item["quantity"];

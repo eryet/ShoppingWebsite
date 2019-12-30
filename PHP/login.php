@@ -5,8 +5,8 @@ session_start();
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
 	global $db;
-	$name=$_POST['Name'];
-	$password=$_POST['Password'];
+	$name=mysqli_real_escape_string($db, $_POST['Name']);
+	$password=mysqli_real_escape_string($db, $_POST['Password']);
 	$password=md5($password);
 	$check="SELECT * FROM user WHERE Name='".$name."' AND Password='".$password."' ";
 	$result=mysqli_query($db,$check);
