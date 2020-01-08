@@ -21,10 +21,19 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 			$_SESSION['Name']= $name;
 			header("Location: admin.php");
 		}
-		else {
+		else if ($row['RoleID'] == 'Deliver'){
 			$role = $row['RoleID'];
 			$_SESSION['RoleID']= $role;
 			$_SESSION['Name']= $name;
+			header("Location: deliver.php");
+		}
+		else {
+			$role = $row['RoleID'];
+			$credit = $row['Credit'];
+			$_SESSION['credit']= $credit;
+			$_SESSION['RoleID']= $role;
+			$_SESSION['Name']= $name;
+			
 			header("Location: user.php");
 		}
 	}	

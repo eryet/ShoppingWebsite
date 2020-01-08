@@ -72,7 +72,8 @@ switch($_GET["action"]) {
 <hr>
 <?php
 	echo "Hello ", $_SESSION['Name'],
-	", Your Role is: ", $_SESSION['RoleID'],"<HR>";
+	", Your Role is: ", $_SESSION['RoleID'],"<HR>
+	, Your Credit is: ", $_SESSION['credit'],"<HR>";
 	$result=getPrdList();
 ?>
 <h1>User mode</h1>
@@ -97,7 +98,7 @@ while (	$rs=mysqli_fetch_assoc($result)) {
 	echo "<td>{$rs['detail']}</td>";
 	echo '
 		<form name="addproduct" method="post" action="user.php?action=add&name='.$rs['name'].'">
-		<td><input type="number" id="quantitiy" name="quantity" value="1" min="1"></td>
+		<td><input type="number" id="quantity" name="quantity" value="1" min="1"></td>
 	    <td><input type="submit" id="addtocart" name="addtocart" value="Add to cart"></td>
 		</form>';
 }

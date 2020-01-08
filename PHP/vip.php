@@ -21,40 +21,27 @@ if ( ! isSet($_SESSION['Name'] )) {
 <?php
 	echo "Hello ", $_SESSION['Name'],
 	", Your Role is: ", $_SESSION['RoleID'],"<HR>";
-	$result=getPrdList();
+	$result=getVipList();
 ?>
 <h1>admin mode</h1>
+<h2>admin mode</h2>
 <td><a href="logout.php">Logout</a></td>
 <td><a href="add_product.php">add product</a></td>
 <td><a href="delete_product.php">delete product</a></td>
 <td><a href="user.php">head to user interface</a></td>
 <td><a href="orderliststatus.php">order list</a></td>
 <td><a href="topseller.php">topseller product</a></td>
-<td><a href="vip.php">vip user</a></td>
 <table width="200" border="1">
   <tr>
-    <td>id</td>
     <td>name</td>
-    <td>price</td>
-	<td>detail</td>
+    <td>amount spended</td>
   </tr>
 <?php
 while (	$rs=mysqli_fetch_assoc($result)) {
-	echo "<tr><td>" . $rs['PID'] . "</td>";
-	echo "<td>{$rs['name']}</td>";
-	echo "<td>" , $rs['price'], "</td>";
-	echo "<td>{$rs['detail']}</td>";
+	echo "<tr><td>{$rs['Name']}</td>";
+	echo "<td>" , $rs['amount'], "</td>";
 	//echo "<td>"<input type="hidden" value=".$rs['name']."></td>";
 	//echo "<td><input type="submit" name="changeproduct" value="Change Product" class="click"></td>";
 }
 ?>
 </table>
-<form name="productForm" method="post" action="change_product.php">
-<p>change product based on product id</p>
-<input type="number" name="PID" id="PID" required>
-<td>
-	<input type="submit" name="changeproduct" value="Change Product" class="click">
-</td>
-</form>
-</body>
-</html> 

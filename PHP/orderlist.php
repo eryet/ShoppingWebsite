@@ -31,6 +31,7 @@ if ( ! isSet($_SESSION['Name'] )) {
     <td>Bill ID</td>
     <td>Date/time</td>
 	<td>adderess</td>
+	<td>delete</td>
   </tr>
 
 <?php
@@ -44,6 +45,10 @@ if ( ! isSet($_SESSION['Name'] )) {
 	echo "<tr><td>" , $rs['billID'] , "</td>";
 	echo "<td>" , $rs['Date'] , "</td>";
 	echo "<td>{$rs['address']}</td>";
+	echo '<form name="deletebillist" method="post" action="delete_billlist.php">
+	<input type="hidden" value="'.$rs['billID'].'" id="billid" name="billid">
+	<td><input type="submit" name="deletebilllist" value="Delete product" class="click"></td>
+	</form>';
 	echo '
 		<form name="listorder" method="post" action="orderdetail.php?bill='.$rs['billID'].'">
 	    <td><input type="submit" id="listorder" name="listorder" value="Check order detail"></td>

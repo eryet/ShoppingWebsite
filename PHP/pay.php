@@ -14,8 +14,16 @@ if ( ! isSet($_SESSION['Name'] )) {
 		global $db;
 		$place = $_POST['address'];
 		$uname = $_SESSION['Name'];
-		if(isset($_SESSION["cart_item"])){
-			$sql = "INSERT INTO billlist (Name, address) VALUES ('".$uname."', '".$place."')";
+		$bprice = $_SESSION["total_price"];
+		$check = "SELECT Credit FROM user where credit > 5 and Name = '$uname'";
+		$result = mysqli_query($db,$check);
+		if(mysqli_num_rows($result) == 1) {
+			echo '<script language="javascript">';
+			echo 'alert("Credit over 5!! Cant purchase!!");';
+			echo 'window.location.href="user.php";';
+			echo '</script>';
+		}else if(isset($_SESSION["cart_item"])){
+			$sql = "INSERT INTO billlist (Name, address, billprice) VALUES ('".$uname."', '".$place."', '".$bprice."')";
 			if (mysqli_query($db,$sql)){
 				$bill =	mysqli_insert_id($db);
 				foreach ($_SESSION["cart_item"] as $item){
